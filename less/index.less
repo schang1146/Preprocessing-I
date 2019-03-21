@@ -50,62 +50,165 @@ table {
 
 /* Set every element's box-sizing to border-box */
 * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
+
+@phone: 500px;
 
 html, body {
 	height: 100%;
-}
+	font-family: 'Karla', sans-serif;
+	font-size: 62.5%;
 
-.container {
-	width: 70%;
-	margin: auto;
-	border: 1px black dotted
-}
-
-header{
 	h1 {
-		font-size: 48px;
+		font-size: 4.8rem;
+	}
+	
+	h2 {
+		font-size: 3.0rem;
+	}
+	
+	h1, h2, h3, h4, h5, h6 {
 		margin: 5px 0px;
+	}
+
+	p {
+		line-height: 1.6;
+		font-size: 1.2rem;
+	}
+
+	.divider {
+		border-top: 1px gray solid;
+		width: 100%;
+		margin: 20px 0px;
 	}
 }
 
+.container {
+	max-width: 875px;
+	margin: auto;
+	width: 100%;
+	padding: 20px;
+}
+
 nav {
+	font-size: 1.2rem;
 	.flex-layout(row; wrap; flex-end; center;);
 
 	a {
 		margin: 20px 0px;
-		margin-left: 20px;
+		margin-left: 40px;
 		text-decoration: none;
 		color: black;
+	}
+
+	@media(max-width: @phone) {
+		padding: 0px 40px;
+		justify-content: space-between;
+	
+		a {
+			margin: 20px 0px;
+		}
 	}
 }
 
 header {
 	background-color: lightgray;
 	padding: 40px;
+
 	img {
 		width: 400px;
+		margin-bottom: 10px;
+	}
+
+	button {
+		font-size: 2.0rem;
+		color: white;
+		background-color: gray;
+		height: 48px;
+		width: 156px;
+		border-radius: 5px;
+		margin: 20px 0px;
+	}
+
+	@media(max-width: @phone) {
+		img {
+			display: none;
+		}
 	}
 }
 
 .mid-section {
-	.flex-layout();
+	font-size: 1.2rem;
+
+	.flex-layout(row; wrap; space-between; flex-start);
+	margin: 40px 0px;
 
 	#intro {
 		width: 50%;
+		padding-right: 2%;
 	}
 
 	#skills {
 		width: 50%;
+		padding-left: 2%;
+		
+		& ul li {
+			border: 1px lightgray solid;
+			padding: 12px;
+		}
+	}
+
+	@media(max-width: @phone) {
+		.flex-layout(column; wrap;);
+
+		#intro, #skills {
+			width: 100%;
+			padding: 0;
+			margin-bottom: 40px;
+		}
+	}
+}
+
+#work-history {
+	table {
+		width: 100%;
+		margin: 10px 0px;
+		font-size: 1.2rem;
+	}
+
+	tr {
+		border-top: 1px lightgray solid;
+		border-bottom: 1px lightgray solid;
+	}
+
+	th {
+		font-weight: bold;
+	}
+
+	td, th {
+		height: 48px;
+		text-align: center;
+		vertical-align: middle;
+	}
+
+	tr:nth-child(even) {
+		background-color: lightgray;
+	}
+
+	@media(max-width: @phone) {
+		padding: 0;
 	}
 }
 
 footer {
 	text-align: center;
+	font-weight: bold;
 	color: white;
 	background-color: gray;
-	padding: 20px 0px 40px 0px;
+	margin-top: 40px;
+	padding-top: 20px;
+	padding-bottom: 40px;
 }
 
 .flex-layout(@r: row; @w: wrap; @jc: space-between; @ai: center;) {
@@ -114,5 +217,3 @@ footer {
 	justify-content: @jc;
 	align-items: @ai;
 }
-
-@phone: 500px;
